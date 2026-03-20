@@ -7,12 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Combat\" />
     <Folder Include="Events\" />
     <Folder Include="Common\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Orders\" />
-    <Folder Include="Units\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 
