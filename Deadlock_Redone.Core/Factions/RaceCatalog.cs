@@ -8,6 +8,29 @@ namespace Deadlock_Redone.Core.Factions
     {
         public static IReadOnlyDictionary<string, RaceTemplate> All { get; } = new Dictionary<string, RaceTemplate>(StringComparer.OrdinalIgnoreCase)
         {
+            ["fairy"] = new RaceTemplate
+            {
+                Id = "fairy",
+                DisplayName = "Fairy",
+                Description = "Fast-breeding fae folk with weak troops, rapid unit production, fast combat speed, and scouts that steal resources.",
+                PopulationGrowthMultiplier = 1.40,
+                UnitProductionMultiplier = 1.20,
+                UnitAttackMultiplier = 0.90,
+                UnitDefenseMultiplier = 0.90,
+                OverpopulationToleranceMultiplier = 2.0,
+                MaxPopulationPerTerritory = 5_000,
+                ScoutCanStealResources = true,
+            },
+            ["sergal"] = new RaceTemplate
+            {
+                Id = "sergal",
+                DisplayName = "Sergal",
+                Description = "A mentally disciplined race that tolerates heavy taxes, can mind blast enemy units, and uses scouts to poison enemy land.",
+                MoraleStabilityMultiplier = 1.35,
+                TaxSensitivityMultiplier = 0.65,
+                CommandCanMindBlast = true,
+                ScoutCanPoisonLand = true
+            },
             ["human"] = new RaceTemplate
             {
                 Id = "human",
@@ -66,5 +89,15 @@ namespace Deadlock_Redone.Core.Factions
                 CommandCanShamanDance = true,
             }
         };
+
+        public static RaceTemplate Get(String id)
+        {
+            if (!All.TryGetValue(id, out var race))
+            {
+                throw new KeyNotFoundException($"Race '{id}' was not found.");
+            }
+
+            return race;
+        }
     }
 }
